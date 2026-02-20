@@ -1955,10 +1955,28 @@
                             <i class="fas fa-paper-plane"></i>
                             Let's Talk
                         </a>
-                        <a href="#" class="btn btn-outline" onclick="downloadCV()">
-                            <i class="fas fa-download"></i>
-                            Download CV
-                        </a>
+                       <div class="cv-dropdown" style="position: relative; display: inline-block;">
+    <button class="btn btn-outline" id="cvDropdownBtn">
+        <i class="fas fa-download"></i>
+        Download CV <i class="fas fa-chevron-down" style="margin-left: 5px; font-size: 0.8rem;"></i>
+    </button>
+    <div id="cvDropdownMenu" style="display: none; position: absolute; top: 100%; left: 0; min-width: 250px; background: var(--bg-card); border: 1px solid var(--border); border-radius: var(--radius-md); box-shadow: var(--shadow-lg); z-index: 100; margin-top: 5px; overflow: hidden;">
+        <a href="Muhammad_Abbas_CV_DM.pdf" download style="display: flex; align-items: center; gap: 12px; padding: 15px 20px; color: var(--text-primary); text-decoration: none; border-bottom: 1px solid var(--border); transition: all 0.3s;">
+            <i class="fas fa-code" style="color: var(--primary); font-size: 1.2rem;"></i>
+            <div>
+                <strong>Digital Marketing</strong>
+                <p style="font-size: 0.85rem; color: var(--text-secondary); margin: 0;">Meta/Google Ads Expert</p>
+            </div>
+        </a>
+        <a href="Muhammad_Abbas_CV_LeadGen.pdf" download style="display: flex; align-items: center; gap: 12px; padding: 15px 20px; color: var(--text-primary); text-decoration: none; transition: all 0.3s;">
+            <i class="fas fa-users" style="color: var(--primary); font-size: 1.2rem;"></i>
+            <div>
+                <strong>Lead Generation Specialist</strong>
+                <p style="font-size: 0.85rem; color: var(--text-secondary); margin: 0;">B2B Leads & Skip Tracing</p>
+            </div>
+        </a>
+    </div>
+</div>
                     </div>
                     
                     <div class="hero-stats">
@@ -2699,50 +2717,7 @@
             window.scrollTo({ top: 0, behavior: 'smooth' });
         });
 
-        // Download CV Function
-        function downloadCV() {
-            const cvContent = `MUHAMMAD ABBAS (abbaswebpro)
-================================
-WordPress Developer & Digital Marketing Expert
-
-CONTACT:
-📧 abbaswebpro@gmail.com
-📱 +92 323 5614796
-📍 Lahore, Pakistan
-🆓 Fiverr: @abbas_webpro
-
-EXPERIENCE:
-• Lead Generation Specialist - SabaSoft Games Studio (2023-2025)
-• Skip Tracing Specialist - International Clients (2024-Present)
-• Digital Marketing Trainee - Aamir Ahmer Academy (2025-2026)
-
-EDUCATION:
-• BS Information Technology - University of Education, Lahore (2023-2027)
-• Intermediate in CS - Stars Group of Colleges (2021-2023)
-
-SKILLS:
-WordPress Development, Meta Ads, Google Ads, B2B Lead Generation, 
-Skip Tracing, Data Scraping, Social Media Marketing, LinkedIn Outreach
-
-CERTIFICATIONS:
-• YouTube Certified (Advanced)
-• Digital Marketing Certified
-
-LANGUAGES:
-English (Fluent), Urdu (Native), Punjabi (Native), Saraiki (Native), German (Basic), French (Basic)
-
-FIVERR: @abbas_webpro - Level 2 Seller with Pro badges
-
-Visit: abbaswebpro.blogspot.com`;
-
-            const blob = new Blob([cvContent], { type: 'text/plain' });
-            const url = window.URL.createObjectURL(blob);
-            const a = document.createElement('a');
-            a.href = url;
-            a.download = 'Muhammad_Abbas_CV.txt';
-            a.click();
-        }
-
+        
         // Form Submission
         document.getElementById('contact-form').addEventListener('submit', function(e) {
             e.preventDefault();
@@ -2779,6 +2754,28 @@ Visit: abbaswebpro.blogspot.com`;
                 navMenu.style.borderRadius = '0 0 var(--radius-md) var(--radius-md)';
             }
         });
+                // CV Dropdown Toggle
+    const dropdownBtn = document.getElementById('cvDropdownBtn');
+    const dropdownMenu = document.getElementById('cvDropdownMenu');
+    
+    dropdownBtn.addEventListener('click', function(e) {
+        e.preventDefault();
+        e.stopPropagation();
+        if (dropdownMenu.style.display === 'none' || dropdownMenu.style.display === '') {
+            dropdownMenu.style.display = 'block';
+        } else {
+            dropdownMenu.style.display = 'none';
+        }
+    });
+    
+    // Click anywhere else to close dropdown
+    document.addEventListener('click', function(e) {
+        if (!dropdownBtn.contains(e.target) && !dropdownMenu.contains(e.target)) {
+            dropdownMenu.style.display = 'none';
+        }
+    });
+        
     </script>
 </body>
+
 </html>
